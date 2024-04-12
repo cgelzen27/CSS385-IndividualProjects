@@ -6,6 +6,13 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     public bool mouseControl = true;
+    public float speed = 5.0f;
+    public float turnSpeed = 30.0f;
+    public float horizontalInput;
+    public float forwardInput;
+    public float fireCooldown;
+    public GameObject projectilePrefab;
+    private float lastShootTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +22,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0f;
-        transform.position = mousePosition;
+        horizontalInput = Input.GetAxis("Horizontal");
+        forwardInput = Input.GetAxis("Vertical");
+        transform.Rotate(Vector3.back * Time.deltaTime * turnSpeed * horizontalInput);
+
+        if (mouseControl)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0f;
+            transform.position = mousePosition;
+        }
+        else
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * speed * forwardInput);
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            mouseControl = !mouseControl;
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > lastShootTime + fireCooldown)
+        {
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+            lastShootTime = Time.time;
+        }
     }
 }

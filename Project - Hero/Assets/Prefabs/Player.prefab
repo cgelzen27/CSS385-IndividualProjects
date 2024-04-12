@@ -99,4 +99,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe3162fb99e2394399e4148adf7344d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseControl: 0
+  mouseControl: 1
