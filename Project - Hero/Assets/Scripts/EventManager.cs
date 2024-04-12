@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
+    // Singleton instance
     public static EventManager current;
 
+    // All the events
     public event Action EnemiesDestroyedEvent;
     public event Action ChangeControlModeEvent;
     public event Action EnemiesTouchEvent;
     public event Action IncreaseEggCounterEvent;
     public event Action DecreaseEggCounterEvent;
 
+    // Implement the singleton
     private void Awake()
     {
         if(current == null)
@@ -25,13 +28,8 @@ public class EventManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
+    // Events to be Raised
     public void StartEnemiesDestroyedEvent()
     {
         current.EnemiesDestroyedEvent?.Invoke();

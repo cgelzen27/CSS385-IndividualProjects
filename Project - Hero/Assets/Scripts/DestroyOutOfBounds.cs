@@ -5,13 +5,9 @@ using UnityEngine;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
+    // Set up the boundaries
     private float verticalBound = 10.0f;
     private float horizontalBound = 16.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -19,6 +15,7 @@ public class DestroyOutOfBounds : MonoBehaviour
         if (transform.position.y > verticalBound || transform.position.y < -verticalBound ||
             transform.position.x > horizontalBound || transform.position.x < -horizontalBound)
         {
+            // Destroy the projectile and Raise the event
             Destroy(gameObject);
             EventManager.current.StartDecreaseEggCounterEvent();
         }
