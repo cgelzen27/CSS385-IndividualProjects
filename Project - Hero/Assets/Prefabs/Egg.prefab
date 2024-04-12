@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4756607732209932464}
   m_Layer: 0
   m_Name: Egg
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35acbb0957e7f14e9f7db68c7740148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: {fileID: 5622960249472915480, guid: 248f265e59c19d14089060741e021df3, type: 3}
 --- !u!114 &-837068617551773072
 MonoBehaviour:
   m_ObjectHideFlags: 0

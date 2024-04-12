@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > lastShootTime + fireCooldown)
         {
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+            Instantiate(projectilePrefab, transform.position, transform.rotation);
             lastShootTime = Time.time;
         }
     }
