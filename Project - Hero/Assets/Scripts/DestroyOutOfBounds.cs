@@ -20,6 +20,7 @@ public class DestroyOutOfBounds : MonoBehaviour
             transform.position.x > horizontalBound || transform.position.x < -horizontalBound)
         {
             Destroy(gameObject);
+            EventManager.current.StartDecreaseEggCounterEvent();
         }
     }
 }

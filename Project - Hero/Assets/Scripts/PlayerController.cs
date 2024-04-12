@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Diagnostics;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
-        transform.Rotate(Vector3.back * Time.deltaTime * turnSpeed * horizontalInput);
+        transform.Rotate(Vector3.back, Time.deltaTime * turnSpeed * horizontalInput);
 
         if (mouseControl)
         {
@@ -40,11 +41,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             mouseControl = !mouseControl;
+            EventManager.current.StartChangeControlModeEvent();
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Application.Quit();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > lastShootTime + fireCooldown)
         {
             Instantiate(projectilePrefab, transform.position, transform.rotation);
             lastShootTime = Time.time;
+            EventManager.current.StartIncreaseEggCounterEvent();
         }
     }
 }

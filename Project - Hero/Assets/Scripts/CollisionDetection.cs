@@ -31,12 +31,16 @@ public class CollisionDetection : MonoBehaviour
             if(health == 0)
             {
                 Destroy(gameObject);
+                EventManager.current.StartEnemiesDestroyedEvent();
             }
-             Destroy(collision.gameObject);
+            Destroy(collision.gameObject);
+            EventManager.current.StartDecreaseEggCounterEvent();
         }
         if(collision.gameObject.tag.Equals("Player"))
         {
             Destroy(gameObject);
+            EventManager.current.StartEnemiesDestroyedEvent();
+            EventManager.current.StartEnemiesTouchEvent();
         }
     }
 }
