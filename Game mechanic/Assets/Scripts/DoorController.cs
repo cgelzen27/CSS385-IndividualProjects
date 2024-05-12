@@ -17,12 +17,12 @@ public class DoorController : MonoBehaviour
         if (isClosed)
         {
             // open the area
-            transform.Translate(new Vector2(0, 3));
+            transform.Translate(new Vector3(1, 0, 0));
         }
         else
         {
             // close the area
-            transform.Translate(new Vector2(0, 3) * -1);
+            transform.Translate(new Vector3(1, 0, 0) * -1);
         }
         isClosed = !isClosed;
     }
